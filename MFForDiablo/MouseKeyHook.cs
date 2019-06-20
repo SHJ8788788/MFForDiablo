@@ -240,6 +240,10 @@ namespace MFForD
                         button = MouseButtons.XButton2;
                         clickCount = 0;
                         break;
+                    case WM_MBUTTONUP:
+                        button = MouseButtons.Middle;
+                        clickCount = 1;
+                        break;
                     case WM_MOUSEWHEEL://522 没试
                         mouseDelta = (short)((mouseHookStruct.mouseData >> 16) & 0xffff);
                         clickCount = 0;

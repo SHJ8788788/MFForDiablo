@@ -125,6 +125,33 @@ namespace MFForD
             //}
         }
 
+        /// <summary>
+        /// 鼠标
+        /// </summary>
+        /// <param name = "sender" ></ param >
+        /// < param name="e"></param>
+        private void Form1_MouseDown(object sender, MouseEventArgs e)
+        {
+            MouseKeyHook hook = (MouseKeyHook)sender;
+            if (e.Button == MouseButtons.Middle) //鼠标中键--买装备
+            {
+                IntPtr hwnd = FindWindow(null, toolStripTextBoxWinName.Text);
+                IntPtr activeWindow = GetForegroundWindow();
+                if (activeWindow == hwnd)
+                {
+                    Task task1 = new Task(() =>
+                    {
+                        for (int i = 0; i < 30; i++)
+                        {
+                            Thread.Sleep(20);
+                            MouseHook.MouseRightClickEvent(0);
+                        }
+                    });
+                    task1.Start();
+                }
+            }
+        }
+
         private void hook_KeyDown(object sender, KeyEventArgs e)
         {
             int buttonKey = (int)e.KeyCode;
@@ -194,7 +221,7 @@ namespace MFForD
                         this.ChangeStatus(runFlag);
                     }
                 }
-            }
+            }          
         }
         
 
