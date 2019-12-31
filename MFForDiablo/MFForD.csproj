@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormYMR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormYMR.Designer.cs">
+      <DependentUpon>FormYMR.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSTATE.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,9 @@
     <Compile Include="MouseKeyHook.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormYMR.resx">
+      <DependentUpon>FormYMR.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormSTATE.resx">
       <DependentUpon>FormSTATE.cs</DependentUpon>
     </EmbeddedResource>

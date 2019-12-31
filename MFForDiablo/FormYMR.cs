@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace MFForD
 {
-    public partial class FormHF : FormSTATE
+    public partial class FormYMR : FormSTATE
     {
         [DllImport("user32.dll", EntryPoint = "FindWindow")]
         private extern static IntPtr FindWindow(string lpClassName, string lpWindowName);
@@ -40,7 +40,7 @@ namespace MFForD
 
         private bool runFlag = false;
         private KeyboardHook k_hook;
-        public FormHF()
+        public FormYMR()
         {
             InitializeComponent();
             //mouseKeyHook1.KeyDown += new KeyEventHandler(Form1_KeyDown);
@@ -163,39 +163,21 @@ namespace MFForD
                 {
                     //timer1.Start();
                     //timer2.Start();
-                    //timer3.Start();
-                    //timer4.Start();
-                    timerR.Start();
-                    timerL.Start();
+                    timer3.Start();
+                    timer4.Start();
+                    //timerR.Start();
+                    //timerL.Start();
                 }
                 else
                 {
                     //timer1.Stop();
                     //timer2.Stop();
-                    //timer3.Stop();
-                    //timer4.Stop();
-                    timerR.Stop();
-                    timerL.Stop();
+                    timer3.Stop();
+                    timer4.Stop();
+                    //timerR.Stop();
+                    //timerL.Stop();
                 }
                 return;
-            }
-            else if (buttonKey == (int)Keys.D1)
-            {
-                IntPtr hwnd = FindWindow(null, toolStripTextBoxWinName.Text);
-                IntPtr activeWindow = GetForegroundWindow();
-                if (activeWindow == hwnd)
-                {
-                    if (runFlag==false)
-                    {
-                        runFlag = true;
-                        timerR.Start();
-                        timerL.Start();
-                        this.ChangeStatus(runFlag);
-                        //keybd_event(Keys.LMenu, 0, 0, 0);
-                        //MouseHook.MouseLeftClickEvent(0);
-                        //keybd_event(Keys.LMenu, 0, KEYEVENTF_KEYUP, 0);
-                    }
-                }
             }
             else if (buttonKey == (int)Keys.D2)
             {
@@ -203,12 +185,15 @@ namespace MFForD
                 IntPtr activeWindow = GetForegroundWindow();
                 if (activeWindow == hwnd)
                 {
-                    if (runFlag)
+                    if (runFlag== true)
                     {
-                        SendKeys.Send("{4}");
+                     
+                        //keybd_event(Keys.RMenu, 0, 0, 0);
+                        //MouseHook.MouseRightClickEvent(0);
+                        //keybd_event(Keys.RMenu, 0, KEYEVENTF_KEYUP, 0);
                     }
                 }
-            }
+            }        
             else if (buttonKey == (int)Keys.Escape|| buttonKey == (int)Keys.Tab)
             {
                 IntPtr hwnd = FindWindow(null, toolStripTextBoxWinName.Text);
@@ -218,6 +203,8 @@ namespace MFForD
                     if (runFlag)
                     {
                         runFlag = (!runFlag);
+                        timer3.Stop();
+                        timer4.Stop();
                         this.ChangeStatus(runFlag);
                     }
                 }

@@ -204,6 +204,19 @@ namespace MFForD
                     }
                 }
             }
+            else if (buttonKey == (int)Keys.NumPad1)
+            {
+                IntPtr hwnd = FindWindow(null, toolStripTextBoxWinName.Text);
+                IntPtr activeWindow = GetForegroundWindow();
+                if (activeWindow == hwnd)
+                {
+                    for (int i = 0; i < 30; i++)
+                    {
+                        Thread.Sleep(10);
+                        MouseHook.MouseRightClickEvent(0);
+                    }
+                }
+            }
         }
         
 

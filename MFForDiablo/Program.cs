@@ -16,7 +16,9 @@ namespace MFForD
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormHF());          
+
+            Application.Run(new FormYMR());       
+            
         }
     }
 }
